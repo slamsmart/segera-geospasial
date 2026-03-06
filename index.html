@@ -84,14 +84,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--gray-100);color:var(--tex
   font-family:'DM Sans',sans-serif;outline:none;transition:.15s;}
 .sb-search input::placeholder{color:var(--gray-400);}
 .sb-search input:focus{border-color:var(--blue);background:#EFF6FF;box-shadow:0 0 0 3px rgba(26,86,160,.08);}
-.sb-filters{display:flex;gap:6px;padding:8px 12px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;
-  border-bottom:1px solid var(--gray-200);background:#FAFCFF;}
-.sb-filters::-webkit-scrollbar{display:none;}
-.filter-chip{background:#fff;border:1.5px solid var(--gray-200);
-  color:var(--gray-500);border-radius:20px;padding:4px 12px;font-size:11px;cursor:pointer;
-  white-space:nowrap;transition:.15s;font-family:'DM Sans',sans-serif;font-weight:500;}
-.filter-chip.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:var(--shadow-sm);}
-.filter-chip:hover:not(.active){background:var(--blue-lt);border-color:var(--blue-md);color:var(--blue);}
+.sb-filters-wrap{padding:6px 12px;border-bottom:1px solid var(--gray-200);background:#fff;}
+.cat-dropdown-btn{display:flex;align-items:center;justify-content:space-between;
+  width:100%;background:#fff;border:1.5px solid var(--gray-200);border-radius:8px;
+  padding:7px 12px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:.15s;}
+.cat-dropdown-btn:hover{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.cat-dropdown-btn.open{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);border-radius:8px 8px 0 0;}
+.cat-dropdown-btn .cdb-left{display:flex;align-items:center;gap:7px;}
+.cat-dropdown-btn .cdb-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.cat-dropdown-btn .cdb-arrow{font-size:10px;transition:.2s;color:var(--gray-400);}
+.cat-dropdown-btn.open .cdb-arrow{transform:rotate(180deg);}
+.cat-dropdown-list{display:none;background:#fff;border:1.5px solid var(--blue);
+  border-top:none;border-radius:0 0 8px 8px;overflow:hidden;
+  box-shadow:0 4px 12px rgba(26,86,160,.1);}
+.cat-dropdown-list.open{display:block;}
+.cat-option{display:flex;align-items:center;gap:8px;padding:8px 12px;
+  font-size:12px;font-weight:500;color:var(--gray-700);cursor:pointer;transition:.12s;
+  border-bottom:1px solid var(--gray-100);}
+.cat-option:last-child{border-bottom:none;}
+.cat-option:hover{background:var(--blue-lt);color:var(--blue);}
+.cat-option.active{background:var(--blue-lt);color:var(--blue);font-weight:700;}
+.cat-option .co-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.cat-option .co-check{margin-left:auto;font-size:12px;color:var(--blue);}
 .sb-list{flex:1;overflow-y:auto;padding:8px;background:var(--gray-50);}
 .sb-list::-webkit-scrollbar{width:4px;}
 .sb-list::-webkit-scrollbar-track{background:transparent;}
@@ -345,12 +360,30 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
 
 /* ── REGION FILTER CHIPS ── */
-.region-chips{display:flex;gap:5px;padding:6px 12px;flex-wrap:wrap;
-  border-bottom:1px solid var(--gray-200);background:var(--gray-50);}
-.region-chip{background:#fff;border:1.5px solid var(--gray-200);
-  color:var(--gray-500);border-radius:5px;padding:3px 8px;font-size:10px;
-  cursor:pointer;transition:.15s;font-weight:500;}
-.region-chip:hover,.region-chip.active{background:var(--blue-lt);border-color:var(--blue-md);color:var(--blue);font-weight:600;}
+/* region dropdown */
+.region-dropdown-wrap{padding:6px 12px;border-bottom:1px solid var(--gray-200);background:var(--gray-50);}
+.region-dropdown-btn{display:flex;align-items:center;justify-content:space-between;
+  width:100%;background:#fff;border:1.5px solid var(--gray-200);border-radius:8px;
+  padding:7px 12px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:.15s;}
+.region-dropdown-btn:hover{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.region-dropdown-btn.open{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);border-radius:8px 8px 0 0;}
+.region-dropdown-btn .rdb-left{display:flex;align-items:center;gap:7px;}
+.region-dropdown-btn .rdb-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.region-dropdown-btn .rdb-arrow{font-size:10px;transition:.2s;color:var(--gray-400);}
+.region-dropdown-btn.open .rdb-arrow{transform:rotate(180deg);}
+.region-dropdown-list{display:none;background:#fff;border:1.5px solid var(--blue);
+  border-top:none;border-radius:0 0 8px 8px;overflow:hidden;
+  box-shadow:0 4px 12px rgba(26,86,160,.1);}
+.region-dropdown-list.open{display:block;}
+.region-option{display:flex;align-items:center;gap:8px;padding:8px 12px;
+  font-size:12px;font-weight:500;color:var(--gray-700);cursor:pointer;transition:.12s;
+  border-bottom:1px solid var(--gray-100);}
+.region-option:last-child{border-bottom:none;}
+.region-option:hover{background:var(--blue-lt);color:var(--blue);}
+.region-option.active{background:var(--blue-lt);color:var(--blue);font-weight:700;}
+.region-option .ro-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.region-option .ro-check{margin-left:auto;font-size:12px;color:var(--blue);}
 
 /* ── VISITOR CHART ── */
 .mini-chart{display:flex;align-items:flex-end;gap:3px;height:50px;padding:0 4px;}
@@ -409,14 +442,20 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
       <div class="sb-search">
         <input type="text" id="search-input" placeholder="🔍  Cari nama usaha, alamat…" oninput="filterBusinesses()">
       </div>
-      <div class="sb-filters" id="cat-filters">
-        <span class="filter-chip active" onclick="setFilter(this,'all')">Semua</span>
-        <span class="filter-chip" onclick="setFilter(this,'Penangkapan')">🎣 Penangkapan</span>
-        <span class="filter-chip" onclick="setFilter(this,'P3KP')">🏭 P3KP</span>
-        <span class="filter-chip" onclick="setFilter(this,'Budidaya')">🐠 Budidaya</span>
-        <span class="filter-chip" onclick="setFilter(this,'KPP')">🤝 KPP</span>
+      <div class="sb-filters-wrap">
+        <button class="cat-dropdown-btn" id="cat-dropdown-btn" onclick="toggleCatDropdown()">
+          <span class="cdb-left"><span class="cdb-dot" id="cdb-dot"></span><span id="cdb-label">Semua Kategori</span></span>
+          <span class="cdb-arrow">▼</span>
+        </button>
+        <div class="cat-dropdown-list" id="cat-dropdown-list"></div>
       </div>
-      <div class="region-chips" id="region-chips"></div>
+      <div class="region-dropdown-wrap">
+        <button class="region-dropdown-btn" id="region-dropdown-btn" onclick="toggleRegionDropdown()">
+          <span class="rdb-left"><span class="rdb-dot" id="rdb-dot"></span><span id="rdb-label">Semua Wilayah</span></span>
+          <span class="rdb-arrow">▼</span>
+        </button>
+        <div class="region-dropdown-list" id="region-dropdown-list"></div>
+      </div>
       <div class="sb-list" id="biz-list"></div>
     </div>
   </div>
@@ -455,6 +494,18 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
       <div class="adm-tab active" id="tab-overview">
         <div class="page-title">📊 Dashboard Overview</div>
         <div class="page-sub">Ringkasan data geospasial usaha kelautan dan perikanan</div>
+
+        <!-- CLOUDINARY CONFIG BANNER -->
+        <div id="cloudinary-banner" style="background:#ECFDF5;border:1.5px solid #6EE7B7;border-radius:12px;
+          padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <div style="font-size:24px">✅</div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;color:#065F46;">Cloudinary aktif!</div>
+            <div style="font-size:11px;color:#059669;">Cloud Name: <strong>dwba5jye4</strong> · Upload Preset: <strong>segera_upload</strong> · Storage foto permanen siap digunakan.</div>
+          </div>
+          <button onclick="resetCloudinaryConfig()" style="background:#fff;border:1.5px solid #6EE7B7;border-radius:8px;
+            padding:6px 14px;font-size:11px;cursor:pointer;color:#065F46;font-family:'DM Sans',sans-serif;">Ubah</button>
+        </div>
         <div class="stat-grid">
           <div class="stat-card c-teal"><div class="s-icon">🏢</div><div class="s-num" id="adm-total">0</div><div class="s-lbl">Total Usaha</div></div>
           <div class="stat-card c-green"><div class="s-icon">✅</div><div class="s-num" id="adm-verified">0</div><div class="s-lbl">Terverifikasi</div></div>
@@ -530,18 +581,85 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
       <!-- TAB: EXPORT -->
       <div class="adm-tab" id="tab-export">
         <div class="page-title">📥 Export Data</div>
-        <div class="page-sub">Unduh data SEGERA dalam berbagai format</div>
-        <div class="export-btns">
+        <div class="page-sub">Unduh data SEGERA dengan filter kategori dan wilayah kerja</div>
+
+        <!-- ── FILTER EXPORT ── -->
+        <div style="background:#fff;border:1.5px solid var(--gray-200);border-radius:14px;padding:20px;margin-bottom:20px;">
+          <div style="font-size:13px;font-weight:700;color:var(--blue-dk);margin-bottom:14px;">🔽 Filter Sebelum Export</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+            <div>
+              <label style="font-size:10px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:6px;">Kategori Bidang</label>
+              <select id="exp-kategori" style="width:100%;background:#fff;border:1.5px solid var(--gray-200);border-radius:8px;
+                padding:8px 12px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;">
+                <option value="all">Semua Kategori</option>
+                <option value="Penangkapan">🎣 Penangkapan</option>
+                <option value="P3KP">🏭 P3KP</option>
+                <option value="Budidaya">🐠 Budidaya</option>
+                <option value="KPP">🤝 KPP</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:10px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:6px;">Wilayah Kerja</label>
+              <select id="exp-wilayah" style="width:100%;background:#fff;border:1.5px solid var(--gray-200);border-radius:8px;
+                padding:8px 12px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;">
+                <option value="all">Semua Wilayah</option>
+                <option value="Surabaya">Surabaya</option>
+                <option value="Kabupaten Sidoarjo">Kabupaten Sidoarjo</option>
+                <option value="Kabupaten Pasuruan">Kabupaten Pasuruan</option>
+                <option value="Kota Pasuruan">Kota Pasuruan</option>
+                <option value="Kota Malang">Kota Malang</option>
+                <option value="Kabupaten Malang">Kabupaten Malang</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:10px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;display:block;margin-bottom:6px;">Status Verifikasi</label>
+              <select id="exp-status" style="width:100%;background:#fff;border:1.5px solid var(--gray-200);border-radius:8px;
+                padding:8px 12px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;">
+                <option value="all">Semua Status</option>
+                <option value="Terverifikasi">✅ Terverifikasi</option>
+                <option value="Dalam Proses">⏳ Dalam Proses</option>
+                <option value="Belum Diverifikasi">❌ Belum Diverifikasi</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+              <div id="exp-preview-count" style="background:var(--blue-lt);border:1.5px solid var(--blue-md);border-radius:8px;
+                padding:8px 14px;font-size:12px;font-weight:600;color:var(--blue);width:100%;text-align:center;">
+                📊 <span id="exp-count-num">15</span> data akan diexport
+              </div>
+            </div>
+          </div>
+          <!-- Preview filter realtime -->
+          <div id="exp-filter-tags" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;"></div>
+        </div>
+
+        <!-- ── EXPORT CARDS: DATA USAHA ── -->
+        <div style="font-size:12px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">📋 Data Usaha</div>
+        <div class="export-btns" style="margin-bottom:20px;">
           <div class="export-card" onclick="exportBizPDF()">
             <div class="e-icon">📄</div>
-            <h4>Data Usaha PDF</h4>
-            <p>Export seluruh data usaha ke format PDF</p>
+            <h4>Export PDF</h4>
+            <p>Laporan data usaha format PDF siap cetak</p>
           </div>
           <div class="export-card" onclick="exportBizExcel()">
             <div class="e-icon">📊</div>
-            <h4>Data Usaha Excel</h4>
-            <p>Export ke format .xlsx untuk analisis</p>
+            <h4>Export Excel</h4>
+            <p>Spreadsheet .xlsx untuk analisis data</p>
           </div>
+          <div class="export-card" onclick="exportBizExcelPerKategori()">
+            <div class="e-icon">📑</div>
+            <h4>Excel Per Kategori</h4>
+            <p>Sheet terpisah per kategori bidang usaha</p>
+          </div>
+          <div class="export-card" onclick="exportBizExcelPerWilayah()">
+            <div class="e-icon">🗺️</div>
+            <h4>Excel Per Wilayah</h4>
+            <p>Sheet terpisah per wilayah kabupaten/kota</p>
+          </div>
+        </div>
+
+        <!-- ── EXPORT CARDS: VISITOR LOG ── -->
+        <div style="font-size:12px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">🌐 Visitor Log</div>
+        <div class="export-btns" style="margin-bottom:20px;">
           <div class="export-card" onclick="exportVisitorPDF()">
             <div class="e-icon">🌐</div>
             <h4>Visitor Log PDF</h4>
@@ -553,10 +671,19 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
             <p>Export visitor log ke format .xlsx</p>
           </div>
         </div>
+
+        <!-- ── MANAJEMEN DATA ── -->
         <div class="tbl-wrap" style="padding:20px;">
+          <div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--gray-200);">
+            <div style="font-size:13px;font-weight:700;color:var(--blue-dk);margin-bottom:6px;">🗄️ Manajemen Data Lokal</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-bottom:10px;">Data tersimpan di localStorage browser ini. Reset untuk kembali ke data awal.</div>
+            <button onclick="resetAllData()" style="background:#FEF2F2;border:1.5px solid #FCA5A5;color:#DC2626;border-radius:8px;
+              padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">
+              🗑️ Reset Semua Data ke Default
+            </button>
+          </div>
           <p style="font-size:13px;color:var(--gray-400);line-height:1.7;">
-            ℹ️ Data yang diexport mencakup seluruh data usaha yang telah diinputkan ke sistem SEGERA, termasuk koordinat GPS, kategori bidang usaha, kode KBLI, dan status verifikasi.<br><br>
-            📌 <strong style="color:var(--white)">Rekomendasi Database:</strong> Untuk produksi, gunakan <strong style="color:var(--aqua)">PostgreSQL + PostGIS</strong> (ekstensi geospasial) yang mendukung jutaan record geodata, query spasial, dan integrasi penuh dengan Leaflet/GeoJSON. Alternatif: <strong style="color:var(--aqua)">MongoDB</strong> dengan tipe GeoJSON native, cocok untuk data tidak terstruktur.
+            ℹ️ Filter kategori dan wilayah berlaku untuk semua jenis export data usaha. Visitor Log diexport penuh tanpa filter.
           </p>
         </div>
       </div>
@@ -584,9 +711,6 @@ tbody td{padding:10px 14px;font-size:12px;color:var(--gray-700);}
         <input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
       </div>
       <button class="btn btn-primary" style="width:100%;margin-top:4px" onclick="doLogin()">Masuk ke Dashboard</button>
-      <p style="text-align:center;font-size:11px;color:var(--gray-500);margin-top:12px;">
-        Demo: admin / admin123
-      </p>
     </div>
     <div class="modal-foot" style="justify-content:center;border-top:none;padding-top:0;">
       <button class="btn btn-ghost" onclick="closeModal('login-modal')">Batal</button>
@@ -777,7 +901,8 @@ const REGION_BOUNDS = {
   "Kabupaten Malang":[[-8.65,112.10],[-7.80,113.05]]
 };
 
-let businesses = [
+// ── DEFAULT DATA (dipakai pertama kali / saat reset) ──
+const DEFAULT_BUSINESSES = [
   {id:1,name:"KUB Mina Bahari Timur",owner:"Suryadi Wicaksono",address:"Jl. Raya Kepanjen No. 45, Kec. Kepanjen",region:"Kabupaten Malang",category:"Penangkapan",kbli:"0311",kbliDesc:"Penangkapan Ikan di Laut",phone:"081234567890",lat:-8.13,lng:112.57,status:"Terverifikasi",verifiedDate:"2024-03-15",products:"Ikan Tuna, Cakalang",capacity:"12 ton/bulan"},
   {id:2,name:"UD. Lestari Ikan Nusantara",owner:"Dewi Prastiwi",address:"Jl. Sulfat No. 12, Kec. Blimbing",region:"Kota Malang",category:"Budidaya",kbli:"0324",kbliDesc:"Budidaya Ikan di Air Tawar",phone:"081298765432",lat:-7.97,lng:112.65,status:"Terverifikasi",verifiedDate:"2024-02-20",products:"Ikan Lele, Ikan Nila",capacity:"8 ton/bulan"},
   {id:3,name:"PT. Delta Seafood Processing",owner:"Agus Hermawan",address:"Jl. Raya Porong KM 5, Kec. Porong",region:"Kabupaten Sidoarjo",category:"P3KP",kbli:"1020",kbliDesc:"Pengolahan dan Pengawetan Ikan",phone:"031-8912345",lat:-7.52,lng:112.69,status:"Terverifikasi",verifiedDate:"2024-01-10",products:"Fillet Ikan, Ikan Asin, Kerupuk Ikan",capacity:"50 ton/bulan"},
@@ -794,15 +919,33 @@ let businesses = [
   {id:14,name:"CV. Seafood Premium Surabaya",owner:"Linda Wijaya",address:"Jl. Rungkut Industri No. 15, Rungkut",region:"Surabaya",category:"P3KP",kbli:"1020",kbliDesc:"Pengolahan dan Pengawetan Ikan",phone:"031-8707890",lat:-7.32,lng:112.77,status:"Terverifikasi",verifiedDate:"2024-05-02",products:"Sosis Ikan, Nugget Ikan, Bakso Ikan",capacity:"10 ton/bulan"},
   {id:15,name:"UD. Samudera Indah",owner:"Rudi Hartono",address:"Jl. Wonorejo Timur No. 3, Rungkut",region:"Surabaya",category:"Budidaya",kbli:"0322",kbliDesc:"Budidaya Ikan di Laut",phone:"0811234567",lat:-7.29,lng:112.80,status:"Terverifikasi",verifiedDate:"2024-06-10",products:"Kerapu, Baronang",capacity:"4 ton/panen"},
 ];
-let nextId = 16;
+
+const CLOUDINARY_CONFIG = {
+  cloudName   : 'dwba5jye4',   // Cloud Name Anda
+  uploadPreset: 'segera_upload' // ← Sesuaikan nama upload preset Anda
+};
+
+// ── LOCALSTORAGE PERSISTENCE ──
+const LS_BIZ     = 'segera_businesses';
+const LS_NEXTID  = 'segera_nextid';
+const LS_VISITORS= 'segera_visitors';
+const LS_CLOUD   = 'segera_cloudname';
+
+function lsLoad(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback; }catch(e){return fallback;} }
+function lsSave(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){ console.warn('localStorage full:', e); } }
+
+let businesses = lsLoad(LS_BIZ, DEFAULT_BUSINESSES.map(b=>({...b,photos:[]})));
+let nextId     = lsLoad(LS_NEXTID, 16);
+
+// Load saved Cloudinary config — handled at DOMContentLoaded
 
 // Visitor log
-let visitors = [];
 const cities = ["Surabaya","Malang","Sidoarjo","Pasuruan","Gresik","Mojokerto","Lamongan","Jakarta","Bandung","Semarang"];
 const pages = ["/","/peta","/usaha","/statistik"];
 const browsers = ["Chrome/120","Firefox/121","Safari/17","Edge/120","Chrome/119"];
-// Generate seed visitor data
-(()=>{
+let visitors = lsLoad(LS_VISITORS, []);
+// Seed jika belum ada data visitor
+if(visitors.length === 0){
   const now = Date.now();
   for(let i=0;i<48;i++){
     const t = new Date(now - (48-i)*3600000 - Math.random()*1800000);
@@ -814,7 +957,8 @@ const browsers = ["Chrome/120","Firefox/121","Safari/17","Edge/120","Chrome/119"
       city: cities[Math.floor(Math.random()*cities.length)]
     });
   }
-})();
+  lsSave(LS_VISITORS, visitors);
+}
 
 let currentFilter = 'all';
 let currentRegion = 'all';
@@ -857,6 +1001,7 @@ function makeIcon(cat){
 }
 
 function renderMapMarkers(){
+  if(!map) return;
   markers.forEach(m=>map.removeLayer(m)); markers=[];
   let filtered = businesses.filter(b=>{
     if(currentFilter!=='all' && b.category!==currentFilter) return false;
@@ -919,23 +1064,47 @@ function renderSidebar(){
 }
 
 function buildRegionChips(){
-  const el = document.getElementById('region-chips');
   const regs = Object.keys(REGION_COLORS);
-  el.innerHTML = `<span class="region-chip active" onclick="setRegion(this,'all')">Semua Wilayah</span>`
-    + regs.map(r=>`<span class="region-chip" onclick="setRegion(this,'${r}')" style="--rc:${REGION_COLORS[r]}">${r}</span>`).join('');
+  const list = document.getElementById('region-dropdown-list');
+  list.innerHTML = `<div class="region-option active" onclick="setRegion('all')">
+      <span class="ro-dot" style="background:var(--blue)"></span>Semua Wilayah
+      <span class="ro-check">✓</span>
+    </div>`
+    + regs.map(r=>`<div class="region-option" onclick="setRegion('${r}')" data-region="${r}">
+      <span class="ro-dot" style="background:${REGION_COLORS[r]}"></span>${r}
+    </div>`).join('');
 }
 
-function setFilter(el, val){
-  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  currentFilter = val;
-  filterBusinesses();
+function toggleRegionDropdown(){
+  const btn = document.getElementById('region-dropdown-btn');
+  const list = document.getElementById('region-dropdown-list');
+  btn.classList.toggle('open');
+  list.classList.toggle('open');
 }
 
-function setRegion(el, val){
-  document.querySelectorAll('.region-chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
+function setRegion(val){
   currentRegion = val;
+  // Update active state in list
+  document.querySelectorAll('.region-option').forEach(o=>{
+    o.classList.remove('active');
+    o.querySelector('.ro-check')?.remove();
+  });
+  const activeOpt = val==='all'
+    ? document.querySelector('.region-option')
+    : document.querySelector(`.region-option[data-region="${val}"]`);
+  if(activeOpt){
+    activeOpt.classList.add('active');
+    activeOpt.innerHTML += '<span class="ro-check">✓</span>';
+  }
+  // Update button label + dot
+  const label = val==='all' ? 'Semua Wilayah' : val;
+  const dotColor = val==='all' ? 'var(--blue)' : (REGION_COLORS[val]||'var(--blue)');
+  document.getElementById('rdb-label').textContent = label;
+  document.getElementById('rdb-dot').style.background = dotColor;
+  // Close dropdown
+  document.getElementById('region-dropdown-btn').classList.remove('open');
+  document.getElementById('region-dropdown-list').classList.remove('open');
+  // Apply filter & map
   filterBusinesses();
   if(val!=='all' && REGION_BOUNDS[val]){
     map.fitBounds(REGION_BOUNDS[val],{padding:[20,20]});
@@ -944,13 +1113,83 @@ function setRegion(el, val){
   }
 }
 
+// Close dropdown when clicking outside
+document.addEventListener('click', e=>{
+  const wrap = document.querySelector('.region-dropdown-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    document.getElementById('region-dropdown-btn')?.classList.remove('open');
+    document.getElementById('region-dropdown-list')?.classList.remove('open');
+  }
+});
+
+function buildCatDropdown(){
+  const cats = [
+    {val:'all', label:'Semua Kategori', emoji:'🗂️', color:'var(--blue)'},
+    {val:'Penangkapan', label:'Penangkapan', emoji:CAT_EMOJI['Penangkapan'], color:CAT_COLORS['Penangkapan']},
+    {val:'P3KP', label:'P3KP', emoji:CAT_EMOJI['P3KP'], color:CAT_COLORS['P3KP']},
+    {val:'Budidaya', label:'Budidaya', emoji:CAT_EMOJI['Budidaya'], color:CAT_COLORS['Budidaya']},
+    {val:'KPP', label:'KPP', emoji:CAT_EMOJI['KPP'], color:CAT_COLORS['KPP']},
+  ];
+  const list = document.getElementById('cat-dropdown-list');
+  list.innerHTML = cats.map((c,i)=>`
+    <div class="cat-option${i===0?' active':''}" onclick="setFilter('${c.val}')" data-cat="${c.val}">
+      <span class="co-dot" style="background:${c.color}"></span>
+      <span>${c.emoji} ${c.label}</span>
+      ${i===0?'<span class="co-check">✓</span>':''}
+    </div>`).join('');
+}
+
+function toggleCatDropdown(){
+  document.getElementById('cat-dropdown-btn').classList.toggle('open');
+  document.getElementById('cat-dropdown-list').classList.toggle('open');
+}
+
+function setFilter(val){
+  currentFilter = val;
+  const cats = {
+    'all':{label:'Semua Kategori',emoji:'🗂️',color:'var(--blue)'},
+    'Penangkapan':{label:'Penangkapan',emoji:CAT_EMOJI['Penangkapan'],color:CAT_COLORS['Penangkapan']},
+    'P3KP':{label:'P3KP',emoji:CAT_EMOJI['P3KP'],color:CAT_COLORS['P3KP']},
+    'Budidaya':{label:'Budidaya',emoji:CAT_EMOJI['Budidaya'],color:CAT_COLORS['Budidaya']},
+    'KPP':{label:'KPP',emoji:CAT_EMOJI['KPP'],color:CAT_COLORS['KPP']},
+  };
+  // Update dropdown options active state
+  document.querySelectorAll('.cat-option').forEach(o=>{
+    o.classList.remove('active');
+    const chk = o.querySelector('.co-check');
+    if(chk) chk.remove();
+  });
+  const activeOpt = document.querySelector(`.cat-option[data-cat="${val}"]`);
+  if(activeOpt){
+    activeOpt.classList.add('active');
+    activeOpt.innerHTML += '<span class="co-check">✓</span>';
+  }
+  // Update button
+  const c = cats[val]||cats['all'];
+  document.getElementById('cdb-label').textContent = `${c.emoji} ${c.label}`;
+  document.getElementById('cdb-dot').style.background = c.color;
+  // Close dropdown
+  document.getElementById('cat-dropdown-btn').classList.remove('open');
+  document.getElementById('cat-dropdown-list').classList.remove('open');
+  filterBusinesses();
+}
+
+// Close cat dropdown when clicking outside
+document.addEventListener('click', e=>{
+  const wrap = document.querySelector('.sb-filters-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    document.getElementById('cat-dropdown-btn')?.classList.remove('open');
+    document.getElementById('cat-dropdown-list')?.classList.remove('open');
+  }
+});
+
 function filterBusinesses(){
   renderMapMarkers();
   renderSidebar();
 }
 
 function flyTo(lat,lng,id){
-  map.flyTo([lat,lng],14,{duration:0.8});
+  if(!map) return;
   setTimeout(()=>{
     const m = markers.find((_,i)=>{
       const f = businesses.filter(b=>{
@@ -1063,6 +1302,8 @@ function showTab(name,el){
   document.querySelectorAll('.adm-nav').forEach(n=>n.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   el.classList.add('active');
+  if(name==='overview') renderAdminAll();
+  if(name==='export') setTimeout(bindExportFilters, 50);
 }
 
 function renderAdminTable(){
@@ -1099,6 +1340,58 @@ function renderVisitorTable(){
     </tr>`).join('');
   const el2 = document.getElementById('visitor-count-badge');
   if(el2) el2.textContent = `Total: ${visitors.length} kunjungan`;
+}
+
+function saveCloudinaryConfig(){
+  const val = document.getElementById('cloudinary-input').value.trim();
+  if(!val){ toast('Masukkan Cloud Name terlebih dahulu!','error'); return; }
+  CLOUDINARY_CONFIG.cloudName = val;
+  localStorage.setItem(LS_CLOUD, val);
+  // Update banner jadi hijau
+  const banner = document.getElementById('cloudinary-banner');
+  if(banner){
+    banner.style.background='#ECFDF5';
+    banner.style.borderColor='#6EE7B7';
+    banner.innerHTML=`
+      <div style="font-size:24px">✅</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:700;color:#065F46;">Cloudinary aktif!</div>
+        <div style="font-size:11px;color:#059669;">Cloud Name: <strong>${val}</strong> · Upload Preset: <strong>${CLOUDINARY_CONFIG.uploadPreset}</strong></div>
+      </div>
+      <button onclick="resetCloudinaryConfig()" style="background:#fff;border:1.5px solid #6EE7B7;border-radius:8px;
+        padding:6px 14px;font-size:11px;cursor:pointer;color:#065F46;font-family:'DM Sans',sans-serif;">Ubah</button>`;
+  }
+  toast('✅ Cloudinary berhasil dikonfigurasi! Foto akan tersimpan permanen.');
+}
+
+function resetCloudinaryConfig(){
+  CLOUDINARY_CONFIG.cloudName = '';
+  localStorage.removeItem(LS_CLOUD);
+  const banner = document.getElementById('cloudinary-banner');
+  if(banner){
+    banner.style.background='#FFFBEB';
+    banner.style.borderColor='#FCD34D';
+    banner.innerHTML=`
+      <div style="font-size:24px">☁️</div>
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:13px;font-weight:700;color:#92400E;margin-bottom:2px;">Cloudinary belum dikonfigurasi</div>
+        <div style="font-size:11px;color:#B45309;">Foto usaha belum tersimpan permanen. Isi Cloud Name untuk mengaktifkan penyimpanan foto.</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <input type="text" id="cloudinary-input" placeholder="Masukkan Cloud Name..." 
+          style="background:#fff;border:1.5px solid #FCD34D;border-radius:8px;padding:7px 12px;
+          font-size:12px;font-family:'DM Sans',sans-serif;outline:none;width:200px;color:#1E3A5F;">
+        <button onclick="saveCloudinaryConfig()" 
+          style="background:#F59E0B;color:#1E3A5F;border:none;border-radius:8px;padding:8px 16px;
+          font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">
+          💾 Simpan
+        </button>
+        <a href="https://cloudinary.com/users/register_free" target="_blank"
+          style="font-size:11px;color:#1A56A0;text-decoration:underline;white-space:nowrap;">
+          Daftar Cloudinary gratis →
+        </a>
+      </div>`;
+  }
 }
 
 function renderOverviewStats(){
@@ -1228,6 +1521,8 @@ function saveBiz(){
         verifiedDate:document.getElementById('f-verified-date').value,
         photos:[...(window._currentPhotos||[])]};
     }
+    lsSave(LS_BIZ, businesses);
+    lsSave(LS_NEXTID, nextId);
     toast('Data usaha berhasil diperbarui ✅');
   } else {
     businesses.push({id:nextId++,name,owner,address,region,category,kbli,kbliDesc,
@@ -1237,6 +1532,8 @@ function saveBiz(){
       status:document.getElementById('f-status').value,
       verifiedDate:document.getElementById('f-verified-date').value,
       photos:[...(window._currentPhotos||[])]});
+    lsSave(LS_BIZ, businesses);
+    lsSave(LS_NEXTID, nextId);
     toast('Usaha baru berhasil ditambahkan ✅');
   }
   closeModal('form-modal');
@@ -1248,6 +1545,7 @@ function saveBiz(){
 function deleteBiz(id){
   if(!confirm('Yakin ingin menghapus data usaha ini?')) return;
   businesses = businesses.filter(b=>b.id!==id);
+  lsSave(LS_BIZ, businesses);
   renderAdminAll();
   renderMapMarkers();
   renderSidebar();
@@ -1257,52 +1555,179 @@ function deleteBiz(id){
 /* ═══════════════════════════════════════════
    EXPORT
 ═══════════════════════════════════════════ */
+function resetAllData(){
+  if(!confirm('Reset semua data ke default? Data yang sudah diinput akan hilang!')) return;
+  localStorage.removeItem(LS_BIZ);
+  localStorage.removeItem(LS_NEXTID);
+  localStorage.removeItem(LS_VISITORS);
+  toast('Data direset. Halaman akan dimuat ulang...');
+  setTimeout(()=>location.reload(), 1200);
+}
+
+/* ═══════════════════════════════════════════
+   EXPORT HELPERS
+═══════════════════════════════════════════ */
+function getExportFilter(){
+  const kat = document.getElementById('exp-kategori')?.value || 'all';
+  const wil = document.getElementById('exp-wilayah')?.value || 'all';
+  const sts = document.getElementById('exp-status')?.value || 'all';
+  return {kat, wil, sts};
+}
+
+function getFilteredBiz(){
+  const {kat, wil, sts} = getExportFilter();
+  return businesses.filter(b=>{
+    if(kat !== 'all' && b.category !== kat) return false;
+    if(wil !== 'all' && b.region !== wil) return false;
+    if(sts !== 'all' && b.status !== sts) return false;
+    return true;
+  });
+}
+
+function getExportTitle(){
+  const {kat, wil, sts} = getExportFilter();
+  let parts = [];
+  if(kat !== 'all') parts.push(kat);
+  if(wil !== 'all') parts.push(wil);
+  if(sts !== 'all') parts.push(sts);
+  return parts.length ? parts.join(' · ') : 'Semua Data';
+}
+
+function getExportFilename(base, ext){
+  const {kat, wil, sts} = getExportFilter();
+  let parts = [base];
+  if(kat !== 'all') parts.push(kat.replace(/\s+/g,'_'));
+  if(wil !== 'all') parts.push(wil.replace(/\s+/g,'_'));
+  if(sts !== 'all') parts.push(sts.replace(/\s+/g,'_'));
+  return parts.join('_') + '.' + ext;
+}
+
+function updateExportCount(){
+  const filtered = getFilteredBiz();
+  const countEl = document.getElementById('exp-count-num');
+  if(countEl) countEl.textContent = filtered.length;
+  // Update filter tags
+  const tagsEl = document.getElementById('exp-filter-tags');
+  if(!tagsEl) return;
+  const {kat, wil, sts} = getExportFilter();
+  let tags = [];
+  if(kat !== 'all') tags.push(`<span style="background:${CAT_COLORS[kat]}22;color:${CAT_COLORS[kat]};border:1px solid ${CAT_COLORS[kat]}44;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;">${CAT_EMOJI[kat]} ${kat}</span>`);
+  if(wil !== 'all') tags.push(`<span style="background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-md);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;">📍 ${wil}</span>`);
+  if(sts !== 'all') tags.push(`<span style="background:#ECFDF5;color:#059669;border:1px solid #6EE7B7;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;">✓ ${sts}</span>`);
+  tagsEl.innerHTML = tags.length ? tags.join('') : '<span style="font-size:11px;color:var(--gray-400);">Tidak ada filter aktif — semua data akan diexport</span>';
+}
+
+// Bind filter change events after DOM ready
+function bindExportFilters(){
+  ['exp-kategori','exp-wilayah','exp-status'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('change', updateExportCount);
+  });
+  updateExportCount();
+}
+
 function exportBizPDF(){
+  const data = getFilteredBiz();
+  if(!data.length){ toast('Tidak ada data untuk diexport!','error'); return; }
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF({orientation:'landscape'});
-  doc.setFontSize(16); doc.setFont('helvetica','bold');
-  doc.text('SEGERA – Data Usaha Kelautan & Perikanan',14,16);
+  const title = getExportTitle();
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.text('SEGERA – Data Usaha Kelautan & Perikanan', 14, 14);
   doc.setFontSize(9); doc.setFont('helvetica','normal');
-  doc.text(`Cabang Dinas Kelautan dan Perikanan Kab. Malang | Dicetak: ${new Date().toLocaleDateString('id')}`,14,22);
+  doc.text(`Filter: ${title}  |  Total: ${data.length} usaha  |  Dicetak: ${new Date().toLocaleDateString('id')}`, 14, 21);
+  doc.text('Cabang Dinas Kelautan dan Perikanan Kab. Malang', 14, 27);
   doc.autoTable({
-    startY:28,
-    head:[['#','Nama Usaha','Pemilik','Wilayah','Kategori','KBLI','Produk','Status']],
-    body: businesses.map((b,i)=>[i+1,b.name,b.owner,b.region,b.category,b.kbli+' - '+b.kbliDesc,b.products||'-',b.status]),
-    styles:{fontSize:7,cellPadding:3},
-    headStyles:{fillColor:[13,148,136],textColor:255,fontStyle:'bold'},
-    alternateRowStyles:{fillColor:[245,250,255]},
+    startY: 32,
+    head:[['#','Nama Usaha','Pemilik','Wilayah','Kategori','KBLI','Produk','Kapasitas','Status']],
+    body: data.map((b,i)=>[i+1, b.name, b.owner, b.region, b.category, b.kbli+' - '+b.kbliDesc, b.products||'-', b.capacity||'-', b.status]),
+    styles:{fontSize:7, cellPadding:2.5},
+    headStyles:{fillColor:[13,59,124], textColor:255, fontStyle:'bold'},
+    alternateRowStyles:{fillColor:[239,246,255]},
+    columnStyles:{0:{cellWidth:8},1:{cellWidth:42},2:{cellWidth:28},3:{cellWidth:28},4:{cellWidth:20},5:{cellWidth:30},6:{cellWidth:35},7:{cellWidth:20},8:{cellWidth:22}},
   });
-  doc.save('SEGERA_Data_Usaha.pdf');
+  doc.save(getExportFilename('SEGERA_Usaha', 'pdf'));
   toast('PDF berhasil diunduh 📄');
 }
 
 function exportBizExcel(){
-  const ws = XLSX.utils.json_to_sheet(businesses.map((b,i)=>({
-    'No':i+1,'Nama Usaha':b.name,'Pemilik':b.owner,'Telepon':b.phone||'-',
-    'Alamat':b.address,'Wilayah':b.region,'Kategori':b.category,
-    'Kode KBLI':b.kbli,'Deskripsi KBLI':b.kbliDesc,'Produk':b.products||'-',
-    'Kapasitas':b.capacity||'-','Status':b.status,'Tgl Verifikasi':b.verifiedDate||'-',
-    'Latitude':b.lat,'Longitude':b.lng
+  const data = getFilteredBiz();
+  if(!data.length){ toast('Tidak ada data untuk diexport!','error'); return; }
+  const ws = XLSX.utils.json_to_sheet(data.map((b,i)=>({
+    'No':i+1, 'Nama Usaha':b.name, 'Pemilik':b.owner, 'Telepon':b.phone||'-',
+    'Alamat':b.address, 'Wilayah':b.region, 'Kategori':b.category,
+    'Kode KBLI':b.kbli, 'Deskripsi KBLI':b.kbliDesc, 'Produk Utama':b.products||'-',
+    'Kapasitas':b.capacity||'-', 'Status':b.status, 'Tgl Verifikasi':b.verifiedDate||'-',
+    'Latitude':b.lat, 'Longitude':b.lng
   })));
   const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb,ws,'Data Usaha');
-  XLSX.writeFile(wb,'SEGERA_Data_Usaha.xlsx');
+  XLSX.utils.book_append_sheet(wb, ws, 'Data Usaha');
+  XLSX.writeFile(wb, getExportFilename('SEGERA_Usaha', 'xlsx'));
   toast('Excel berhasil diunduh 📊');
+}
+
+function exportBizExcelPerKategori(){
+  const data = getFilteredBiz();
+  if(!data.length){ toast('Tidak ada data untuk diexport!','error'); return; }
+  const wb = XLSX.utils.book_new();
+  const kategoris = ['Penangkapan','P3KP','Budidaya','KPP'];
+  let sheetAdded = 0;
+  kategoris.forEach(kat=>{
+    const rows = data.filter(b=>b.category===kat);
+    if(!rows.length) return;
+    const ws = XLSX.utils.json_to_sheet(rows.map((b,i)=>({
+      'No':i+1, 'Nama Usaha':b.name, 'Pemilik':b.owner, 'Telepon':b.phone||'-',
+      'Alamat':b.address, 'Wilayah':b.region, 'Kode KBLI':b.kbli,
+      'Deskripsi KBLI':b.kbliDesc, 'Produk Utama':b.products||'-',
+      'Kapasitas':b.capacity||'-', 'Status':b.status, 'Tgl Verifikasi':b.verifiedDate||'-',
+      'Latitude':b.lat, 'Longitude':b.lng
+    })));
+    XLSX.utils.book_append_sheet(wb, ws, kat);
+    sheetAdded++;
+  });
+  if(!sheetAdded){ toast('Tidak ada data per kategori!','error'); return; }
+  XLSX.writeFile(wb, getExportFilename('SEGERA_PerKategori', 'xlsx'));
+  toast(`Excel Per Kategori berhasil diunduh (${sheetAdded} sheet) 📑`);
+}
+
+function exportBizExcelPerWilayah(){
+  const data = getFilteredBiz();
+  if(!data.length){ toast('Tidak ada data untuk diexport!','error'); return; }
+  const wb = XLSX.utils.book_new();
+  const wilayahs = ['Surabaya','Kabupaten Sidoarjo','Kabupaten Pasuruan','Kota Pasuruan','Kota Malang','Kabupaten Malang'];
+  let sheetAdded = 0;
+  wilayahs.forEach(wil=>{
+    const rows = data.filter(b=>b.region===wil);
+    if(!rows.length) return;
+    const sheetName = wil.replace('Kabupaten ','Kab.').replace('Kota ','Kota ').substring(0,31);
+    const ws = XLSX.utils.json_to_sheet(rows.map((b,i)=>({
+      'No':i+1, 'Nama Usaha':b.name, 'Pemilik':b.owner, 'Telepon':b.phone||'-',
+      'Alamat':b.address, 'Kategori':b.category, 'Kode KBLI':b.kbli,
+      'Deskripsi KBLI':b.kbliDesc, 'Produk Utama':b.products||'-',
+      'Kapasitas':b.capacity||'-', 'Status':b.status, 'Tgl Verifikasi':b.verifiedDate||'-',
+      'Latitude':b.lat, 'Longitude':b.lng
+    })));
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    sheetAdded++;
+  });
+  if(!sheetAdded){ toast('Tidak ada data per wilayah!','error'); return; }
+  XLSX.writeFile(wb, getExportFilename('SEGERA_PerWilayah', 'xlsx'));
+  toast(`Excel Per Wilayah berhasil diunduh (${sheetAdded} sheet) 🗺️`);
 }
 
 function exportVisitorPDF(){
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF();
-  doc.setFontSize(16); doc.setFont('helvetica','bold');
-  doc.text('SEGERA – Log Pengunjung',14,16);
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.text('SEGERA – Log Pengunjung', 14, 14);
   doc.setFontSize(9); doc.setFont('helvetica','normal');
-  doc.text(`Dicetak: ${new Date().toLocaleDateString('id')} | Total: ${visitors.length} kunjungan`,14,22);
+  doc.text(`Dicetak: ${new Date().toLocaleDateString('id')} | Total: ${visitors.length} kunjungan`, 14, 21);
   doc.autoTable({
-    startY:28,
+    startY: 28,
     head:[['#','IP Address','Timestamp','Halaman','Browser','Kota']],
-    body: visitors.slice().reverse().map((v,i)=>[i+1,v.ip,v.timestamp,v.page,v.userAgent,v.city]),
-    styles:{fontSize:7,cellPadding:2.5},
-    headStyles:{fillColor:[10,37,64],textColor:255,fontStyle:'bold'},
+    body: visitors.slice().reverse().map((v,i)=>[i+1, v.ip, v.timestamp, v.page, v.userAgent, v.city]),
+    styles:{fontSize:7, cellPadding:2.5},
+    headStyles:{fillColor:[10,37,64], textColor:255, fontStyle:'bold'},
     alternateRowStyles:{fillColor:[245,250,255]},
   });
   doc.save('SEGERA_Visitor_Log.pdf');
@@ -1311,12 +1736,12 @@ function exportVisitorPDF(){
 
 function exportVisitorExcel(){
   const ws = XLSX.utils.json_to_sheet(visitors.slice().reverse().map((v,i)=>({
-    'No':i+1,'IP Address':v.ip,'Timestamp':v.timestamp,'Halaman':v.page,
-    'Browser':v.userAgent,'Kota (Estimasi)':v.city
+    'No':i+1, 'IP Address':v.ip, 'Timestamp':v.timestamp, 'Halaman':v.page,
+    'Browser':v.userAgent, 'Kota (Estimasi)':v.city
   })));
   const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb,ws,'Visitor Log');
-  XLSX.writeFile(wb,'SEGERA_Visitor_Log.xlsx');
+  XLSX.utils.book_append_sheet(wb, ws, 'Visitor Log');
+  XLSX.writeFile(wb, 'SEGERA_Visitor_Log.xlsx');
   toast('Excel Visitor Log berhasil diunduh 📊');
 }
 
@@ -1353,6 +1778,7 @@ function addVisitor(ip){
   const ua = navigator.userAgent.match(/Chrome|Firefox|Safari|Edge/)?.[0]||'Browser';
   const ver = navigator.userAgent.match(/(?:Chrome|Firefox|Safari|Edge)\/(\d+)/)?.[1]||'';
   visitors.push({ip, timestamp:now, page:'/', userAgent:`${ua}/${ver}`, city:'Pengunjung Baru'});
+  lsSave(LS_VISITORS, visitors);
   updateStats();
 }
 
@@ -1360,38 +1786,101 @@ function addVisitor(ip){
    INIT
 ═══════════════════════════════════════════ */
 /* ═══════════════════════════════════════════
+   CLOUDINARY CONFIG — ISI DI SINI
+═══════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════
    FOTO UPLOAD & LIGHTBOX
 ═══════════════════════════════════════════ */
 window._currentPhotos = [];
 
-function handlePhotoUpload(e){
+function isCloudinaryReady(){
+  return CLOUDINARY_CONFIG.cloudName && CLOUDINARY_CONFIG.cloudName.trim() !== '';
+}
+
+async function uploadToCloudinary(file){
+  const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.cloudName}/image/upload`;
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
+  fd.append('folder', 'segera');
+  const res = await fetch(url, {method:'POST', body:fd});
+  if(!res.ok) throw new Error('Upload gagal: ' + res.statusText);
+  const data = await res.json();
+  return data.secure_url; // URL permanen HTTPS
+}
+
+async function handlePhotoUpload(e){
   const files = Array.from(e.target.files);
   const remaining = 4 - (window._currentPhotos||[]).length;
   const toLoad = files.slice(0, remaining);
   if(files.length > remaining) toast(`Maks 4 foto. ${files.length - remaining} file diabaikan.`,'error');
-  let loaded = 0;
-  toLoad.forEach(file=>{
-    if(file.size > 2*1024*1024){ toast('Ukuran foto maks 2MB!','error'); return; }
-    const reader = new FileReader();
-    reader.onload = ev => {
-      window._currentPhotos.push(ev.target.result);
-      loaded++;
-      if(loaded===toLoad.length) renderPhotoPreview();
-    };
-    reader.readAsDataURL(file);
-  });
+
+  if(!isCloudinaryReady()){
+    // Fallback: simpan base64 lokal (sementara, hilang saat refresh)
+    let loaded = 0;
+    toLoad.forEach(file=>{
+      if(file.size > 2*1024*1024){ toast('Ukuran foto maks 2MB!','error'); return; }
+      const reader = new FileReader();
+      reader.onload = ev => {
+        window._currentPhotos.push(ev.target.result);
+        loaded++;
+        if(loaded===toLoad.length){
+          renderPhotoPreview();
+          toast('⚠️ Cloudinary belum dikonfigurasi. Foto tersimpan sementara (hilang saat refresh).','error');
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+    e.target.value=''; return;
+  }
+
+  // Upload ke Cloudinary
+  for(const file of toLoad){
+    if(file.size > 10*1024*1024){ toast('Ukuran foto maks 10MB!','error'); continue; }
+    // Preview loading sementara
+    const tempId = 'tmp_' + Date.now() + Math.random();
+    window._currentPhotos.push({url:'loading', tempId});
+    renderPhotoPreview();
+    toast('⏳ Mengupload foto ke Cloudinary...');
+    try {
+      const secureUrl = await uploadToCloudinary(file);
+      const idx = window._currentPhotos.findIndex(p=>p && p.tempId===tempId);
+      if(idx !== -1) window._currentPhotos[idx] = secureUrl;
+      renderPhotoPreview();
+      toast('✅ Foto berhasil diupload ke Cloudinary!');
+    } catch(err){
+      const idx = window._currentPhotos.findIndex(p=>p && p.tempId===tempId);
+      if(idx !== -1) window._currentPhotos.splice(idx,1);
+      renderPhotoPreview();
+      toast('❌ Upload gagal: ' + err.message,'error');
+    }
+  }
   e.target.value='';
+}
+
+function getPhotoUrl(p){
+  if(!p || p==='loading') return '';
+  if(typeof p === 'object') return '';
+  return p;
 }
 
 function renderPhotoPreview(){
   const grid = document.getElementById('photo-preview-grid');
   if(!grid) return;
   const photos = window._currentPhotos || [];
-  let html = photos.map((p,i)=>`
-    <div class="photo-thumb">
-      <img src="${p}" alt="Foto ${i+1}">
+  let html = photos.map((p,i)=>{
+    const url = typeof p === 'string' ? p : '';
+    if(!url || url==='loading'){
+      return `<div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;background:#EFF6FF;">
+        <div style="text-align:center;"><div style="font-size:20px">⏳</div><div style="font-size:9px;color:#64748B;margin-top:4px">Uploading...</div></div>
+      </div>`;
+    }
+    return `<div class="photo-thumb">
+      <img src="${url}" alt="Foto ${i+1}">
       <button class="del-photo" onclick="removePhoto(${i})" title="Hapus foto">✕</button>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   if(photos.length < 4){
     html += `<div class="photo-thumb-add" title="Tambah foto">
       <input type="file" accept="image/*" multiple onchange="handlePhotoUpload(event)">
@@ -1408,13 +1897,43 @@ function removePhoto(idx){
 }
 
 function openLightbox(src){
+  if(!src || src==='loading') return;
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox').classList.add('open');
 }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.getElementById('lightbox').classList.remove('open'); });
 
 document.addEventListener('DOMContentLoaded',()=>{
-  initMap();
+  // Restore Cloudinary config from localStorage
+  const savedCloud = localStorage.getItem('segera_cloudname');
+  if(savedCloud && savedCloud.trim()){
+    CLOUDINARY_CONFIG.cloudName = savedCloud;
+    // Update banner to green
+    const banner = document.getElementById('cloudinary-banner');
+    if(banner){
+      banner.style.background='#ECFDF5';
+      banner.style.borderColor='#6EE7B7';
+      banner.innerHTML=`
+        <div style="font-size:24px">✅</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:#065F46;">Cloudinary aktif!</div>
+          <div style="font-size:11px;color:#059669;">Cloud Name: <strong>${savedCloud}</strong> · Foto tersimpan permanen.</div>
+        </div>
+        <button onclick="resetCloudinaryConfig()" style="background:#fff;border:1.5px solid #6EE7B7;border-radius:8px;
+          padding:6px 14px;font-size:11px;cursor:pointer;color:#065F46;font-family:'DM Sans',sans-serif;">Ubah</button>`;
+    }
+  }
+
+  try { initMap(); } catch(e){ 
+    console.warn('Map gagal load (perlu internet/browser):', e.message);
+    document.getElementById('map').innerHTML = 
+      '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:#EFF6FF;color:#1A56A0;gap:8px;">' +
+      '<div style="font-size:48px">🗺️</div>' +
+      '<div style="font-size:15px;font-weight:700">Peta memerlukan koneksi internet</div>' +
+      '<div style="font-size:12px;color:#64748B">Buka file di browser untuk menampilkan peta</div>' +
+      '</div>';
+  }
+  buildCatDropdown();
   buildRegionChips();
   renderSidebar();
   updateStats();
