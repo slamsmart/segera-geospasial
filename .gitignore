@@ -1,0 +1,10 @@
+.vercel
+.env*.local
+node_modules/
+caveman/
+lean-ctx/
+.agents/
+.claude/
+.vscode/
+set-up-project-v.1.0/
+skills-lock.json

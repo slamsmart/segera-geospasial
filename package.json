@@ -1,0 +1,27 @@
+{
+  "name": "segera",
+  "version": "1.0.0",
+  "description": "SEGERA geospatial fisheries information system",
+  "main": "index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck",
+    "dev": "vercel dev",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cloudinary": "^2.10.0",
+    "convex": "^1.39.1"
+  },
+  "devDependencies": {
+    "@convex-dev/eslint-plugin": "^2.0.0",
+    "@types/node": "^25.9.0",
+    "@vercel/node": "^5.5.14",
+    "typescript": "^6.0.3"
+  }
+}
