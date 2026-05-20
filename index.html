@@ -994,6 +994,114 @@ body:has(#admin-view[style*="flex"]) #sync-stats-section{display:none !important
   #pub-header .header-org, #pub-header .header-divider{display:none;}
 }
 
+/* ─────── MOBILE RESPONSIVE (≤768px) ─────── */
+@media(max-width:768px){
+  /* Header v2 mobile */
+  #pub-header{padding:10px 14px !important;gap:8px !important;flex-wrap:wrap;}
+  #pub-header .logo-wrap img{width:36px !important;height:36px !important;}
+  #pub-header .logo-text strong{font-size:18px !important;}
+  #pub-header .logo-text span{font-size:8px !important;letter-spacing:1px !important;}
+  #pub-header .header-divider, #pub-header .header-org{display:none !important;}
+  #pub-header .header-spacer{flex:1 1 auto;min-width:8px;}
+  #pub-header .stat-pill{padding:5px 9px !important;margin-left:4px !important;}
+  #pub-header .stat-pill .pill-icon{width:24px !important;height:24px !important;font-size:14px !important;}
+  #pub-header .stat-pill .pill-num{font-size:14px !important;}
+  #pub-header .stat-pill .pill-lbl{font-size:9px !important;}
+  #btn-admin-login{padding:6px 10px !important;margin-left:6px !important;}
+  #btn-admin-login .login-text{display:none !important;}
+  #btn-admin-login .login-caret{display:none !important;}
+
+  /* Layout main mobile */
+  #main-area{flex-direction:column !important;height:auto !important;padding:0 !important;gap:0 !important;}
+  #main-area > div:first-child{height:55vh !important;min-height:380px !important;flex:none !important;}
+  #sidebar{width:100% !important;border-left:none !important;border-top:1px solid var(--gray-200);}
+
+  /* Map controls mobile */
+  .map-floating-top{top:8px !important;left:8px !important;right:8px !important;flex-direction:row !important;gap:6px !important;}
+  .map-floating-top .map-search{flex:1;min-width:0;}
+  .map-floating-top .map-search input{font-size:13px !important;padding:7px 10px !important;}
+  .map-filter-btn{padding:7px 10px !important;font-size:12px !important;}
+  .map-filter-btn span:nth-child(2){display:none;}
+  .map-zoom-stack{top:auto !important;bottom:80px !important;left:8px !important;}
+  .map-zoom-stack button{width:34px !important;height:34px !important;}
+  .map-layer-btn{bottom:14px !important;right:8px !important;width:38px !important;height:38px !important;}
+  .map-layer-popover{bottom:62px !important;right:8px !important;left:auto !important;min-width:160px;}
+  .map-legend{bottom:60px !important;left:8px !important;padding:8px 10px !important;}
+  .map-legend .legend-title{font-size:9px !important;}
+  .map-legend .legend-row{font-size:10px !important;}
+  .map-analysis-cta{bottom:14px !important;left:50% !important;right:auto !important;transform:translateX(-50%);font-size:11px !important;padding:7px 12px !important;}
+
+  /* Sidebar mobile */
+  .sb-filters-wrap, .region-dropdown-wrap{padding:8px 12px !important;}
+  .sb-list-wrap{padding:8px 12px !important;}
+  .biz-card{padding:10px !important;}
+  .biz-name{font-size:13px !important;}
+  .biz-region{font-size:11px !important;}
+
+  /* Modals mobile */
+  .modal-overlay{padding:10px;}
+  .modal-box{width:100% !important;max-width:100% !important;max-height:90vh;overflow-y:auto;border-radius:14px !important;}
+  .modal-head{padding:14px 16px !important;}
+  .modal-head h2{font-size:18px !important;}
+  .modal-head p{font-size:11px !important;}
+  .modal-body{padding:14px 16px !important;}
+  .modal-foot{padding:12px 16px !important;flex-direction:column-reverse;gap:8px;}
+  .modal-foot .btn{width:100%;}
+  .form-grid{grid-template-columns:1fr !important;gap:8px !important;}
+  .form-step-title{font-size:10px !important;padding:7px 10px !important;margin:14px 0 8px !important;}
+  .form-group input, .form-group select, .form-group textarea, .kbli-picker-btn{padding:9px 11px !important;font-size:13px !important;}
+  .form-group label{font-size:10px !important;}
+  .bidang-picker-grid{grid-template-columns:1fr 1fr !important;gap:10px !important;}
+  .bidang-card{padding:18px 12px !important;}
+  .bidang-card .bc-icon{width:44px !important;height:44px !important;font-size:22px !important;}
+  .bidang-card .bc-name{font-size:13px !important;}
+  .bidang-card .bc-desc{font-size:10px !important;}
+
+  /* Sync stats mobile */
+  #sync-stats-section{padding:18px 0 24px !important;}
+  #sync-stats-section .sync-inner{padding:0 14px !important;}
+  #sync-stats-section .sync-title{font-size:18px !important;}
+  #sync-stats-section .sync-sub{font-size:11px !important;}
+  #sync-stats-section .sync-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important;}
+  #sync-stats-section .sync-card{padding:14px !important;min-height:120px !important;}
+  #sync-stats-section .sync-card .num{font-size:28px !important;}
+
+  /* Admin view mobile */
+  #admin-header{padding:0 12px !important;height:54px !important;flex-wrap:wrap;}
+  #admin-header .logo-text strong{font-size:18px !important;}
+  #admin-header .logo-text span{display:none !important;}
+  .admin-badge{font-size:9px !important;padding:3px 7px !important;}
+  #admin-header > span{display:none !important;}
+  #admin-main{flex-direction:column !important;}
+  #admin-sidebar{width:100% !important;flex-direction:row !important;overflow-x:auto;padding:8px !important;gap:6px !important;border-right:none !important;border-bottom:1px solid var(--gray-200);}
+  .adm-nav{flex:none;margin:0 !important;padding:8px 12px !important;font-size:12px !important;white-space:nowrap;}
+  .adm-nav .n-icon{font-size:14px !important;}
+  #admin-content{padding:14px !important;}
+  .page-title{font-size:20px !important;}
+  .page-sub{font-size:12px !important;margin-bottom:14px !important;}
+  .stat-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important;}
+  .stat-card{padding:12px 14px !important;}
+  .stat-card .s-num{font-size:24px !important;}
+  .stat-card .s-icon{font-size:18px !important;}
+  /* Admin tables mobile */
+  .tbl-wrap{overflow-x:auto;}
+  table{font-size:11px;min-width:600px;}
+  thead th{padding:8px 10px !important;font-size:10px !important;}
+  tbody td{padding:8px 10px !important;font-size:11px !important;}
+  .tbl-btn{padding:3px 7px !important;font-size:10px !important;}
+}
+
+/* ─────── SMALL MOBILE (≤480px) ─────── */
+@media(max-width:480px){
+  #pub-header .stat-pill{padding:4px 7px !important;}
+  #pub-header .stat-pill .pill-icon{width:20px !important;height:20px !important;font-size:12px !important;}
+  #pub-header .stat-pill .pill-num{font-size:13px !important;}
+  #pub-header .stat-pill .pill-lbl{display:none !important;}
+  #main-area > div:first-child{height:45vh !important;min-height:320px !important;}
+  .bidang-picker-grid{grid-template-columns:1fr !important;}
+  #sync-stats-section .sync-grid{grid-template-columns:1fr !important;}
+}
+
 
 </style>
 </head>
