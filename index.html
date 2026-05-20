@@ -1074,8 +1074,10 @@ body:has(#admin-view[style*="flex"]) #sync-stats-section{display:none !important
   #admin-header > span{display:none !important;}
   #admin-main{flex-direction:column !important;}
   #admin-sidebar{width:100% !important;flex-direction:row !important;overflow-x:auto;padding:8px !important;gap:6px !important;border-right:none !important;border-bottom:1px solid var(--gray-200);}
+  #admin-sidebar > div[style*="flex:1"], #admin-sidebar > div[style*="padding:12px 16px"]{display:none !important;}
   .adm-nav{flex:none;margin:0 !important;padding:8px 12px !important;font-size:12px !important;white-space:nowrap;}
   .adm-nav .n-icon{font-size:14px !important;}
+  .adm-nav.active{background:var(--blue) !important;color:#fff !important;border-color:transparent !important;border-radius:8px !important;}
   #admin-content{padding:14px !important;}
   .page-title{font-size:20px !important;}
   .page-sub{font-size:12px !important;margin-bottom:14px !important;}
@@ -2443,14 +2445,23 @@ function renderSyncStats(){
   const grid = document.getElementById('sync-grid');
   if(!grid) return;
   const wilker = ['Kabupaten Malang','Kota Malang','Kota Batu','Kabupaten Pasuruan','Kota Pasuruan','Kabupaten Sidoarjo','Surabaya'];
-  const data = businesses.filter(b=>currentFilter === 'all' || b.category === currentFilter);
+  const data = businesses.filter(b=>{
+    if(currentFilter !== 'all' && b.category !== currentFilter) return false;
+    if(currentRegion !== 'all' && b.region !== currentRegion) return false;
+    return true;
+  });
   const verified = data.filter(b=>b.status === 'Terverifikasi').length;
   const activeColor = currentFilter === 'all' ? '#1A56A0' : (CAT_COLORS[currentFilter] || '#1A56A0');
   document.getElementById('sync-total-all').textContent = data.length;
   document.getElementById('sync-total-ver').textContent = verified;
-  document.getElementById('sync-filter-label').textContent = currentFilter === 'all' ? 'Semua Kategori' : `${CAT_EMOJI[currentFilter]||''} ${currentFilter}`;
+  const filterLabel = [];
+  if(currentFilter !== 'all') filterLabel.push(`${CAT_EMOJI[currentFilter]||''} ${currentFilter}`);
+  if(currentRegion !== 'all') filterLabel.push(currentRegion);
+  document.getElementById('sync-filter-label').textContent = filterLabel.length ? filterLabel.join(' · ') : 'Semua Kategori';
   document.getElementById('sync-filter-dot').style.background = activeColor;
-  grid.innerHTML = wilker.map(region=>{
+  // Filter wilker: show only selected region or all
+  const visibleWilker = currentRegion === 'all' ? wilker : wilker.filter(w=>w===currentRegion);
+  grid.innerHTML = visibleWilker.map(region=>{
     const rows = data.filter(b=>b.region === region);
     const ver = rows.filter(b=>b.status === 'Terverifikasi').length;
     const proc = rows.length - ver;
@@ -2560,6 +2571,10 @@ function showTab(name,el){
   document.querySelectorAll('.adm-nav').forEach(n=>n.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   el.classList.add('active');
+  // Mobile: scroll active nav into view
+  if(window.innerWidth <= 768 && el.scrollIntoView){
+    el.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  }
   if(name==='overview') renderAdminAll();
   if(name==='settings') renderSettings();
   if(name==='export') setTimeout(bindExportFilters, 50);
